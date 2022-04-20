@@ -3,11 +3,7 @@ from .base import *
 DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 # upisati domen od sajta
-ALLOWED_HOSTS = ["https://guarded-falls-39745.herokuapp.com",
-                 "http://guarded-falls-39745.herokuapp.com",
-                 '127.0.0.1',
-                 'https://trainingplanapi.herokuapp.com',
-                 'http://trainingplanapi.herokuapp.com/api/plan']
+ALLOWED_HOSTS = ['trainingplanapi.herokuapp.com']
 
 
 CORS_ALLOWED_ORIGINS = ["https://guarded-falls-39745.herokuapp.com",
