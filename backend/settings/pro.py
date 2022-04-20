@@ -24,8 +24,8 @@ DATABASES = {
         'PASSWORD': 'admin',
     }
 }
-import dj_databse_url
-db_from_env = dj_databse_url.config(conn_max_age = 600)
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age = 600)
 DATABASES['default'].update(db_from_env)
 
 ROOT_URLCONF = 'backend.urls'
