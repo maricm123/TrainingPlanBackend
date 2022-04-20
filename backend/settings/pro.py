@@ -19,9 +19,9 @@ CORS_ORIGIN_WHITELIST = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'trainingPlan',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'NAME': 'postgresql-concave-49155',
+        'USER': 'frurrfhyhtwsqk',
+        'PASSWORD': 'e15a3643937171e7469a99bd8059e2542719978fa86b83111c688086a5302027',
     }
 }
 import dj_database_url
