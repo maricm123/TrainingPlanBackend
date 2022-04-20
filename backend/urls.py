@@ -22,3 +22,4 @@ urlpatterns = [
     path('api/', include('trainingPlan.urls', namespace='api')),
     path('api-auth/', include('rest_framework.urls', namespace='api'))
 ]
+

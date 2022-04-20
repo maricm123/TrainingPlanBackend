@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-bn^dl&8-r4=dgpf9zn0lyplvzyj0q(#1(##h7$4^we7%xrox0i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '127.0.0.1']
 
 
 # White listing the localhost:3000 port

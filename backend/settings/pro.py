@@ -1,14 +1,21 @@
 from .base import *
 
-DEBUG = False
-
+DEBUG = True
+DEBUG_PROPAGATE_EXCEPTIONS = True
 # upisati domen od sajta
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["https://guarded-falls-39745.herokuapp.com",
+                 "http://guarded-falls-39745.herokuapp.com",
+                 '127.0.0.1']
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "http://localhost:3000",
+CORS_ALLOWED_ORIGINS = ["https://guarded-falls-39745.herokuapp.com",
+                 "http://guarded-falls-39745.herokuapp.com"]
+
+# White listing the localhost:3000 port
+# for React
+CORS_ORIGIN_WHITELIST = [
+    "https://guarded-falls-39745.herokuapp.com",
+    "http://guarded-falls-39745.herokuapp.com"
 ]
 
 DATABASES = {
