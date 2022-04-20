@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = True
+DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
 # upisati domen od sajta
 ALLOWED_HOSTS = ['trainingplanapi.herokuapp.com']
@@ -18,9 +18,15 @@ CORS_ORIGIN_WHITELIST = [
 
 DATABASES = {
     'default': {
-        
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'trainingPlan',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
     }
 }
+import dj_databse_url
+db_from_env = dj_databse_url.config(conn_max_age = 600)
+DATABASES['default'].update(db_from_env)
 
 ROOT_URLCONF = 'backend.urls'
 

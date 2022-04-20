@@ -1,1 +1,4 @@
 python manage.py runserver --settings backend.settings.base
+
+
+push local database:PGUSER=postgres PGPASSWORD=admin  heroku pg:push postgres://ec2-44-194-4-127.compute-1.amazonaws.com/trainingPlan postgresql-tetrahedral-95769
