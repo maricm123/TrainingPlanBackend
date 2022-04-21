@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 # upisati domen od sajta
 ALLOWED_HOSTS = ['trainingplanapi.herokuapp.com', '127.0.0.1']
@@ -40,11 +40,17 @@ REST_FRAMEWORK = {
 # EMAIL_HOST_PASSWORD = 'mseghbfkcnatsctr'
 # EMAIL_USE_TLS = True
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = '/static/'
+
+if not DEBUG:
+    STATIC_ROOT = ''
+
+
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/'),
 )
