@@ -3,7 +3,7 @@ from .base import *
 DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
 # upisati domen od sajta
-ALLOWED_HOSTS = ['trainingplanapi.herokuapp.com']
+ALLOWED_HOSTS = ['trainingplanapi.herokuapp.com', '127.0.0.1']
 
 
 CORS_ALLOWED_ORIGINS = ["https://guarded-falls-39745.herokuapp.com",
@@ -16,14 +16,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://guarded-falls-39745.herokuapp.com"
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'trainingPlan',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-    }
-}
+# trazi varijablu database url na heroku i povezuje se na produkcijsku bazu
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age = 600)
 DATABASES['default'].update(db_from_env)
@@ -46,3 +39,12 @@ REST_FRAMEWORK = {
 # EMAIL_HOST_USER = 'sanjamuskistudio@gmail.com'
 # EMAIL_HOST_PASSWORD = 'mseghbfkcnatsctr'
 # EMAIL_USE_TLS = True
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
