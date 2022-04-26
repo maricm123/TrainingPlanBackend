@@ -1,5 +1,6 @@
 from .base import *
 
+# kada stavim na false, ne servuje static files, mora heroku da ih servuje (videti to)
 DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 # upisati domen od sajta
