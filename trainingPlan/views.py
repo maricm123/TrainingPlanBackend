@@ -16,7 +16,7 @@ class TrainingPlanUserWritePermissions(BasePermission):
 
 class TrainingPlanList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    queryset = Plan.planobjects.all()
+    queryset = Plan.objects.all()
     serializer_class = PlanSerializer
 
 

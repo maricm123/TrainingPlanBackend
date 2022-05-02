@@ -37,23 +37,63 @@ CORS_ORIGIN_WHITELIST = [
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'trainingPlan',
-    'accounts',
+# INSTALLED_APPS = [
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'trainingPlan',
+#     'accounts',
 
-    'corsheaders',
-    'rest_auth',
-    'rest_auth.registration',
-    'rest_framework',
-    'rest_framework.authtoken'
+#     'corsheaders',
+#     'rest_auth',
+#     'rest_auth.registration',
+#     'rest_framework',
+#     'rest_framework.authtoken'
 
+# ]
+
+DJANGO_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.humanize",
+    "django.contrib.postgres",
+    "django.forms",
 ]
+
+THIRD_PARTY_APPS = [
+    # "formtools",  # wizard forms
+    "rest_framework",
+    "rest_framework.authtoken",
+    'rest_auth.registration',
+    'rest_auth',
+    # "django_extensions",  # shell_plus, ...
+    # "django_premailer",  # template tag that turns CSS blocks into style attributes
+    # "safedelete",  # add models, managers, and querysets to handle clean delete for objects
+    "corsheaders",  # to handle CORS with right headers
+    # "widget_tweaks",  # to add attributes to input fields directly in HTML
+    # "braces",  # additional mixins for class based views
+    # "raven.contrib.django.raven_compat",  # sentry client
+    # "django_celery_beat",  # used for periodic tasks in celery
+    # "debug_toolbar",
+    # "hijack",  # used to take control of someone
+    # "drf_spectacular",  # useful for rest api doc generation
+    # "django_filters",
+]
+
+PROJECT_APPS = [  # if this contains the app name only, the app config is ignored.
+    "trainingPlan.apps.TrainingplanConfig",
+    "accounts.apps.AccountsConfig",
+]
+
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

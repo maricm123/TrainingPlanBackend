@@ -95,7 +95,7 @@ class Coach(models.Model):
     phone_number = models.CharField(max_length=100)
 
     sport_category = models.ForeignKey("trainingPlan.Category", on_delete = models.CASCADE, related_name='coach_category')
-    plans = models.ForeignKey("trainingPlan.Plan", on_delete = models.CASCADE, related_name='coach_plans', null = True, blank = True)
+    # plans = models.ForeignKey("trainingPlan.Plan", on_delete = models.CASCADE, related_name='coach_plans', null = True, blank = True)
 
     def __str__(self):
         return self.coach.username

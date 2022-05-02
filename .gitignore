@@ -1,0 +1,14 @@
+*.pyc
+.env
+.env_test
+*.log
+*.DS_Store
+local_settings.py
+*.sqlite3
+.idea/
+*output/
+*staticfiles
+*.dump
+.mypy_cache/
+*.mo
+geckodriver
