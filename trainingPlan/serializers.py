@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Plan, Category
+from .models.plan import Plan, Category
 
 class PlanSerializer(serializers.ModelSerializer):
     class Meta:

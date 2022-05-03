@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bn^dl&8-r4=dgpf9zn0lyplvzyj0q(#1(##h7$4^we7%xrox0i'
-
+SECRET_KEY = os.environ["DJ_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -75,7 +77,7 @@ THIRD_PARTY_APPS = [
     'rest_auth',
     # "django_extensions",  # shell_plus, ...
     # "django_premailer",  # template tag that turns CSS blocks into style attributes
-    # "safedelete",  # add models, managers, and querysets to handle clean delete for objects
+    "safedelete",  # add models, managers, and querysets to handle clean delete for objects
     "corsheaders",  # to handle CORS with right headers
     # "widget_tweaks",  # to add attributes to input fields directly in HTML
     # "braces",  # additional mixins for class based views
@@ -90,6 +92,7 @@ THIRD_PARTY_APPS = [
 PROJECT_APPS = [  # if this contains the app name only, the app config is ignored.
     "trainingPlan.apps.TrainingplanConfig",
     "accounts.apps.AccountsConfig",
+    "core.apps.CoreConfig",
 ]
 
 

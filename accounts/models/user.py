@@ -5,9 +5,19 @@ from rest_framework.authtoken.models import Token
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 import backend.settings
+from safedelete import SOFT_DELETE
+from safedelete.managers import SafeDeleteManager
+from safedelete.models import SafeDeleteModel
 
-class MyUserManager(BaseUserManager):
-  def create_user(self, email, username, password = None):
+from core.models.behaviours import TimeStampable, UUIDable, AppLogFormatable
+
+
+class MyUserManager(BaseUserManager, SafeDeleteManager):
+  """
+    Custom User Manager is required when redefining User class
+  """
+
+  def create_staffuser(self, email, username, password = None):
     if not email:
       raise ValueError("Users must have an email")
     if not username:
@@ -21,6 +31,7 @@ class MyUserManager(BaseUserManager):
     user.set_password(password)
     user.save(using=self._db)
     return user
+
   def create_superuser(self, email, username, password):
     user = self.create_user(
       email= self.normalize_email(email),
@@ -34,17 +45,25 @@ class MyUserManager(BaseUserManager):
 
     user.save(using = self._db)
     return user
+  
+  
 
-class User(AbstractBaseUser):
-  email = models.EmailField(verbose_name="email", max_length=60, unique=True)
-  username = models.CharField(max_length=100, unique=True)
+class User(AbstractBaseUser, SafeDeleteModel):
+  _safedelete_policy = SOFT_DELETE
+
+
+  first_name = models.CharField(max_length=30, blank=True, verbose_name=_("first name"))
+  last_name = models.CharField(max_length=30, blank=True, verbose_name=_("last name"))
+  phone_number = models.CharField(max_length=30, blank=True, verbose_name=_("phone"))
+  email = models.EmailField(unique=True, null=False, verbose_name=_("email"))
+
   is_client = models.BooleanField(default=False)
   is_coach = models.BooleanField(default=False)
   is_admin = models.BooleanField(default=False)
   date_joined= models.DateTimeField(verbose_name='date_joined', auto_now_add=True)
 
-  USERNAME_FIELD = 'email'
-  REQUIRED_FIELDS = ['username']
+  USERNAME_FIELD = "email"  # used as the unique identifier
+  REQUIRED_FIELDS = ['username']  # a list of the field names that will be prompted with createsuperuser
   
   objects = MyUserManager()
 
@@ -66,7 +85,11 @@ class User(AbstractBaseUser):
   def create_auth_token(sender, instance = None, created = False, **kwargs):
     if created:
       Token.objects.create(user = instance)
-      
+
+
+  class Meta:
+        app_label = 'accounts' 
+
 
 
 class Client(models.Model):
